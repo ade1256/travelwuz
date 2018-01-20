@@ -6,6 +6,7 @@ class Login extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_login');
+		$this->load->model('m_data');
 	}
 
 	public function index()
@@ -27,15 +28,22 @@ class Login extends CI_Controller {
 		$cek = $this->m_login->cek_login("tb_user",$where)->num_rows();
 
 		if($cek > 0){
-
+			$yglogin = $this->db->get_where('tb_user',$where)->row();
 			$data_session = array(
-				'username' => $username,
-				'status' => "login"
+				'id' => $yglogin->id,
+				'status' => "login",
+				'username' => $yglogin->username,
+				'fullname' => $yglogin->fullname,
+				'level' =>$yglogin->level
 				);
 
 			$this->session->set_userdata($data_session);
-
-			redirect(base_url("admin"));
+			if ($this->session->userdata('level')==='admin') {
+				redirect(base_url('admin'));
+			}
+			if ($this->session->userdata('level')==='user') {
+				echo "user";
+			}
 
 		}else{
 			echo "Username dan password salah !";

@@ -1,7 +1,19 @@
 <?php 
  
 class M_data extends CI_Model{
-	function tampil_data($data_username){
-		return $this->db->get_where('tb_user',$data_username);
+	function tampil_data(){
+		return $this->db->get('tb_user');
+	}
+	function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
+ 
+	function update_data(){
+		return $this->db->get('tb_user');
+	}
+ 
+	function hapus_data($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
 	}
 }

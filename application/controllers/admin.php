@@ -12,8 +12,12 @@ class Admin extends CI_Controller {
 	 }
 	public function index()
 	 {	
-	 	$data_username = array('username'=> $this->session->userdata('username'));
-		$data['tb_user']= $this->m_data->tampil_data($data_username)->result();
+		$data['tb_user']= $this->m_data->tampil_data()->result();
 		$this->load->view('v_admin',$data);
+	}
+
+	function data_user(){
+		$data['tb_user']= $this->m_data->tampil_data()->result();
+		$this->load->view('v_admin_data_user',$data);
 	}
 }
