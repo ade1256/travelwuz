@@ -323,7 +323,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
-                 <li><a href=<?php echo base_url("admin"); ?>><i class="fa fa-circle-o"></i> Overview</a></li>
+                <li><a href=<?php echo base_url("admin"); ?>><i class="fa fa-circle-o"></i> Overview</a></li>
                 <li class="active"><a href=<?php echo base_url("admin/data_user"); ?>><i class="fa fa-table"></i> Data users</a></li>   
         </ul>
       </section>
@@ -350,52 +350,45 @@
         <div class="row">
           <div class="col-xs-12">
 
-            <div class="box">
+          <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>     
-                  <a href=<?php echo base_url("crud/tambah/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
-                          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                          <span><strong>Add</strong></span>            
-                        </a>
+                <h3 class="box-title">Tambah data</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="data_user" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>No id</th>
-                      <th>Fullname</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>Level</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php  foreach ($tb_user as $u) { ?>
-                    <tr>
-                      <td><?php echo $u->id; ?></td>
-                      <td><?php echo $u->fullname; ?></td>
-                      <td><?php echo $u->username; ?></td>
-                      <td><?php echo base64_decode($u->password); ?></td>
-                      <td><?php echo $u->level; ?></td>
-                      <td>
-                        <a href=<?php echo base_url("crud/edit/".$u->id); ?> class="btn btn-primary a-btn-slide-text">
-                          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                          <span><strong>Edit</strong></span>            
-                        </a>
-                        <a href=<?php echo base_url("crud/hapus/".$u->id); ?> class="btn btn-primary a-btn-slide-text">
-                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                         <span><strong>Delete</strong></span>            
-                       </a>
-                     </td>
-                   </tr>
-                   <?php } ?>
-                 </tfoot>
-               </table>
+              <!-- form start -->
+            <form  action=<?php echo base_url("crud/tambah_aksi"); ?> method="post">
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Fullname</label>
+                    <input type="hidden" class="form-control" name="id"  />
+                  <input type="text" class="form-control" name="fullname" />
+                </div>
+                 <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="username"/>
+                </div>
+                  <div class="form-group">
+                  <label >Password</label>
+                  <input type="text" class="form-control" name="password"/>
+                </div>
+                <div class="form-group">
+                  <label>Level</label>
+                  <select class="form-control" name="level">
+                    <option value="-">-- SELECT LEVEL --</option>
+                    <option  value="admin">Admin</option>
+                    <option value="user">User</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <input type="submit" value="submit" class="btn btn-primary"/>
+              </div>
+            </form>
              </div>
              <!-- /.box-body -->
-           </div>
+          </div>
            <!-- /.box -->
          </div>
          <!-- /.col -->
@@ -613,8 +606,6 @@
 <script src="<?php echo base_url(); ?>assets/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url(); ?>assets/adminlte/bootstrap/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url(); ?>assets/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="<?php echo base_url(); ?>assets/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
@@ -625,17 +616,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/adminlte/dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-  $(function () {
-    $("#data_user").DataTable({
-       "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true
-    });
-  });
-</script>
+
 </body>
 </html>

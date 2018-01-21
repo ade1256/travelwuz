@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_data');
+		$this->load->library('encryption');
 		if ($this->session->userdata('status')!='login') {
 			redirect(base_url('login'));
 		}
