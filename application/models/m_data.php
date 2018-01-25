@@ -1,6 +1,8 @@
 <?php 
  
 class M_data extends CI_Model{
+
+	// DATA USER
 	function tampil_data(){
 		return $this->db->get('tb_user');
 	}
@@ -20,5 +22,14 @@ class M_data extends CI_Model{
 	function update_data($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
-	}	
+	}
+
+
+		
+
+
+	// DATA CUSTOMER
+	function tampil_data_customer(){
+		return $this->db->get('tb_customer');
+	}
 }

@@ -21,4 +21,9 @@ class Admin extends CI_Controller {
 		$data['tb_user']= $this->m_data->tampil_data()->result();
 		$this->load->view('v_admin_data_user',$data);
 	}
+
+	function data_customer(){
+		$data['tb_customer']= $this->m_data->tampil_data_customer()->result();
+		$this->load->view('v_admin_data_customer',$data);
+	}
 }

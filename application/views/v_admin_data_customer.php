@@ -324,8 +324,8 @@
         <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                  <li><a href=<?php echo base_url("admin"); ?>><i class="fa fa-circle-o"></i> Overview</a></li>
-                <li class="active"><a href=<?php echo base_url("admin/data_user"); ?>><i class="fa fa-table"></i> Data users</a></li>   
-                <li><a href=<?php echo base_url("admin/data_customer"); ?>><i class="fa fa-table"></i> Data customers</a></li>   
+                <li><a href=<?php echo base_url("admin/data_user"); ?>><i class="fa fa-table"></i> Data users</a></li>   
+                <li class="active"><a href=<?php echo base_url("admin/data_customer"); ?>><i class="fa fa-table"></i> Data customers</a></li>   
         </ul>
       </section>
       <!-- /.sidebar -->
@@ -354,7 +354,7 @@
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Data Table With Full Features</h3>     
-                  <a href=<?php echo base_url("crud/tambah/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
+                  <a href=<?php echo base_url("crud/tambah_customer/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                           <span><strong>Add</strong></span>            
                         </a>
@@ -365,27 +365,27 @@
                   <thead>
                     <tr>
                       <th>No id</th>
-                      <th>Fullname</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>Level</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Phone</th>
+                      <th>Gender</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php  foreach ($tb_user as $u) { ?>
+                    <?php  foreach ($tb_customer as $c) { ?>
                     <tr>
-                      <td><?php echo $u->id; ?></td>
-                      <td><?php echo $u->fullname; ?></td>
-                      <td><?php echo $u->username; ?></td>
-                      <td><?php echo base64_decode($u->password); ?></td>
-                      <td><?php echo $u->level; ?></td>
+                      <td><?php echo $c->id; ?></td>
+                      <td><?php echo $c->name; ?></td>
+                      <td><?php echo $c->address; ?></td>
+                      <td><?php echo $c->phone; ?></td>
+                      <td><?php echo $c->gender; ?></td>
                       <td>
-                        <a href=<?php echo base_url("crud/edit/".$u->id); ?> class="btn btn-primary a-btn-slide-text">
+                        <a href=<?php echo base_url("crud/edit_customer/".$c->id); ?> class="btn btn-primary a-btn-slide-text">
                           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                           <span><strong>Edit</strong></span>            
                         </a>
-                        <a href=<?php echo base_url("crud/hapus/".$u->id); ?> class="btn btn-primary a-btn-slide-text">
+                        <a href=<?php echo base_url("crud/hapus_customer/".$c->id); ?> class="btn btn-primary a-btn-slide-text">
                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                          <span><strong>Delete</strong></span>            
                        </a>
