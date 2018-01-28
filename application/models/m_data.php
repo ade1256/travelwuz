@@ -26,10 +26,23 @@ class M_data extends CI_Model{
 
 
 		
-
-
-	// DATA CUSTOMER
 	function tampil_data_customer(){
 		return $this->db->get('tb_customer');
+	}
+
+	function tampil_data_rute(){
+		return $this->db->get('tb_rute');
+	}
+
+	function tampil_data_transportation(){
+		return $this->db->get('tb_transportation');
+	}
+
+	function tampil_data_transportation_type(){
+		return $this->db->get('tb_transportation_type');
+	}
+
+	function tampil_data_reservation(){
+		return $this->db->get('tb_reservation');
 	}
 }

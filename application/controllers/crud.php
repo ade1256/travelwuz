@@ -18,7 +18,8 @@ class Crud extends CI_Controller{
  
  // DATA USER
 	function tambah(){
-		$this->load->view('v_admin_data_tambah_user');
+		$data['title'] = "Tambah User";
+		$this->load->view('v_admin_data_tambah_user',$data);
 	}
 
 	function tambah_aksi(){
@@ -41,6 +42,7 @@ class Crud extends CI_Controller{
 	function edit($id){
 		$where = array('id' => $id);
 		$data['tb_user'] = $this->m_data->edit_data($where,'tb_user')->result();
+		$data['title'] = 'Edit User';
 		$this->load->view('v_admin_data_edit_user',$data);
 	}
 
@@ -77,6 +79,10 @@ class Crud extends CI_Controller{
 	}
 
 // DATA CUSTOMER
+	function tambah_customer(){
+		$data['title'] = "Tambah Customer";
+		$this->load->view('v_admin_data_tambah_customer',$data);
+	}
 	function hapus_customer($id){
 		$where = array('id' => $id);
 		$this->m_data->hapus_data($where,'tb_customer');
@@ -107,5 +113,23 @@ class Crud extends CI_Controller{
 	$this->m_data->update_data($where,$data,'tb_customer');
 	redirect('admin/data_customer');
 	}
+	
+	function tambah_customer_aksi(){
+
+		$name = $this->input->post('name');
+	$address = $this->input->post('address');
+	$phone = $this->input->post('phone');
+	$gender = $this->input->post('gender');
+	$data = array(
+		'name' => $name,
+		'address' => $address,
+		'phone' => $phone,
+		'gender' => $gender
+	);
+
+		$this->m_data->input_data($data,'tb_customer');
+		redirect('admin/data_customer');
+	}
+	
 
 }

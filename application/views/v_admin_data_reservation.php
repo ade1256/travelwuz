@@ -13,8 +13,7 @@
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data tables</li>
+          <li class="active">Data transportation</li>
         </ol>
       </section>
 
@@ -25,39 +24,50 @@
 
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Data Customer</h3>     
-                  <a href=<?php echo base_url("crud/tambah_customer/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
+                <h3 class="box-title">Data Reservation</h3>     
+                  <a href=<?php echo base_url("crud/tambah_reservation/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                           <span><strong>Add</strong></span>            
                         </a>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="data_customer" class="table table-bordered table-striped">
+                <table id="data_reservation" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>No id</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Phone</th>
-                      <th>Gender</th>
-                      <th>Action</th>
+                      <th>Code</th>
+                      <th>at</th>
+                      <th>date</th>
+                      <th>customer id</th>
+                      <th>seat code</th>
+                      <th>rute id</th>
+                      <th>depart at</th>
+                      <th>price</th>
+                      <th>user id</th>
+                      <th>What will you do ?</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php  foreach ($tb_customer as $c) { ?>
+                    <?php  foreach ($tb_reservation as $reservation) { ?>
                     <tr>
-                      <td><?php echo $c->id; ?></td>
-                      <td><?php echo $c->name; ?></td>
-                      <td><?php echo $c->address; ?></td>
-                      <td><?php echo $c->phone; ?></td>
-                      <td><?php echo $c->gender; ?></td>
+                      <td><?php echo $reservation->id; ?></td>
+                      <td><?php echo $reservation->reservation_code; ?></td>
+                      <td><?php echo $reservation->reservation_at; ?></td>
+                      <td><?php echo $reservation->reservation_date; ?></td>
+                      <td><?php echo $reservation->customer_id; ?></td>
+                      <td><?php echo $reservation->seat_code; ?></td>
+                      <td><?php echo $reservation->rute_id; ?></td>
+                      <td><?php echo $reservation->depart_at; ?></td>
+                      <td><?php echo $reservation->price; ?></td>
+                      <td><?php echo $reservation->user_id; ?></td>
+                   
                       <td>
-                        <a href=<?php echo base_url("crud/edit_customer/".$c->id); ?> class="btn btn-primary a-btn-slide-text">
+                        <a href=<?php echo base_url("crud/edit_reservation/".$reservation->id); ?> class="btn btn-primary a-btn-slide-text">
                           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                           <span><strong>Edit</strong></span>            
                         </a>
-                        <a href=<?php echo base_url("crud/hapus_customer/".$c->id); ?> class="btn btn-primary a-btn-slide-text">
+                        <a href=<?php echo base_url("crud/hapus_reservation/".$reservation->id); ?> class="btn btn-primary a-btn-slide-text">
                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                          <span><strong>Delete</strong></span>            
                        </a>
@@ -80,7 +90,7 @@
    <!-- /.content-wrapper -->
 <script>
   $(function () {
-    $("#data_customer").DataTable({
+    $("#data_reservation").DataTable({
        "paging": true,
       "lengthChange": true,
       "searching": true,

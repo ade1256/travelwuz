@@ -1,5 +1,6 @@
 <?php  $this->load->view('layout_admin/header');?>
 <?php  $this->load->view('layout_admin/menu_samping');?>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -22,32 +23,31 @@
 
           <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Tambah data</h3>
+                <h3 class="box-title">Edit data</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
               <!-- form start -->
-            <form  action=<?php echo base_url("crud/tambah_aksi"); ?> method="post">
+            <form  action=<?php echo base_url("crud/tambah_customer_aksi"); ?> method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label>Fullname</label>
-                    <input type="hidden" class="form-control" name="id"  />
-                  <input type="text" class="form-control" name="fullname" />
+                  <label>Name</label>
+                    <input type="hidden" class="form-control" name="id" />
+                  <input type="text" class="form-control" name="name" />
                 </div>
                  <div class="form-group">
-                  <label>Username</label>
-                  <input type="text" class="form-control" name="username"/>
+                  <label>Address</label>
+                  <input type="text" class="form-control" name="address"/>
                 </div>
                   <div class="form-group">
-                  <label >Password</label>
-                  <input type="text" class="form-control" name="password"/>
+                  <label >Phone</label>
+                  <input type="text" class="form-control" name="phone"/>
                 </div>
                 <div class="form-group">
-                  <label>Level</label>
-                  <select class="form-control" name="level">
-                    <option value="-">-- SELECT LEVEL --</option>
-                    <option  value="admin">Admin</option>
-                    <option value="user">User</option>
+                  <label>Gender</label>
+                  <select class="form-control" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                   </select>
                 </div>
               </div>
@@ -58,6 +58,7 @@
             </form>
              </div>
              <!-- /.box-body -->
+            
           </div>
            <!-- /.box -->
          </div>
@@ -68,6 +69,4 @@
      <!-- /.content -->
    </div>
    <!-- /.content-wrapper -->
-
-
-<?php  $this->load->view('layout_admin/footer');?>
+ <?php  $this->load->view('layout_admin/footer');?>

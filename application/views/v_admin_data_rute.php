@@ -1,5 +1,7 @@
-    <?php  $this->load->view('layout_admin/header');?>
-    <?php  $this->load->view('layout_admin/menu_samping');?>
+
+   <?php  $this->load->view('layout_admin/header');?>
+    <!-- Left side column. contains the logo and sidebar -->
+   <?php  $this->load->view('layout_admin/menu_samping');?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -11,8 +13,7 @@
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li><a href="#">Tables</a></li>
-          <li class="active">Data tables</li>
+          <li class="active">Data rute</li>
         </ol>
       </section>
 
@@ -23,39 +24,41 @@
 
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>     
-                  <a href=<?php echo base_url("crud/tambah/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
+                <h3 class="box-title">Data Rute</h3>     
+                  <a href=<?php echo base_url("crud/tambah_rute/"); ?> class="btn btn-primary a-btn-slide-text" style="position:absolute;right:0;margin-right:10px; ">
                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                           <span><strong>Add</strong></span>            
                         </a>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="data_user" class="table table-bordered table-striped">
+                <table id="data_rute" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>No id</th>
-                      <th>Fullname</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>Level</th>
-                      <th>Action</th>
+                      <th>Depart at</th>
+                      <th>Rute from</th>
+                      <th>Rute to</th>
+                      <th>Price</th>
+                      <th>Transportation id</th>
+                      <th>What will you do ?</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php  foreach ($tb_user as $u) { ?>
+                    <?php  foreach ($tb_rute as $rute) { ?>
                     <tr>
-                      <td><?php echo $u->id; ?></td>
-                      <td><?php echo $u->fullname; ?></td>
-                      <td><?php echo $u->username; ?></td>
-                      <td><?php echo base64_decode($u->password); ?></td>
-                      <td><?php echo $u->level; ?></td>
+                      <td><?php echo $rute->id; ?></td>
+                      <td><?php echo $rute->depart_at; ?></td>
+                      <td><?php echo $rute->rute_from; ?></td>
+                      <td><?php echo $rute->rute_to; ?></td>
+                      <td><?php echo $rute->price; ?></td>
+                      <td><?php echo $rute->transportation_id; ?></td>
                       <td>
-                        <a href=<?php echo base_url("crud/edit/".$u->id); ?> class="btn btn-primary a-btn-slide-text">
+                        <a href=<?php echo base_url("crud/edit_rute/".$rute->id); ?> class="btn btn-primary a-btn-slide-text">
                           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                           <span><strong>Edit</strong></span>            
                         </a>
-                        <a href=<?php echo base_url("crud/hapus/".$u->id); ?> class="btn btn-primary a-btn-slide-text">
+                        <a href=<?php echo base_url("crud/hapus_rute/".$rute->id); ?> class="btn btn-primary a-btn-slide-text">
                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                          <span><strong>Delete</strong></span>            
                        </a>
@@ -74,11 +77,11 @@
        <!-- /.row -->
      </section>
      <!-- /.content -->
-    </div>
+   </div>
    <!-- /.content-wrapper -->
-  <script>
+<script>
   $(function () {
-    $("#data_user").DataTable({
+    $("#data_rute").DataTable({
        "paging": true,
       "lengthChange": true,
       "searching": true,
@@ -88,4 +91,4 @@
     });
   });
 </script>
-<?php  $this->load->view('layout_admin/footer');?>
+<?php $this->load->view('layout_admin/footer'); ?>
