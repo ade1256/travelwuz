@@ -130,6 +130,12 @@ class Crud extends CI_Controller{
 		$this->m_data->input_data($data,'tb_customer');
 		redirect('admin/data_customer');
 	}
+
+		// DATA RUTE
+	function tambah_rute(){
+		$data['title']='Tambah Rute';
+		$this->load->view('v_admin_data_tambah_rute',$data);
+	}
 	
 
 }
