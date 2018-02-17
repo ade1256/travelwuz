@@ -71,9 +71,10 @@
      <!-- /.content -->
    </div>
    <!-- /.content-wrapper -->
-<script>
+<?php  $this->load->view('layout_admin/footer');?>
+  <script>
   $(function () {
-    $("#transportation_type").DataTable({
+    $("#data_transportation_type").DataTable({
        "paging": true,
       "lengthChange": true,
       "searching": true,
@@ -83,4 +84,3 @@
     });
   });
 </script>
-<?php $this->load->view('layout_admin/footer'); ?>

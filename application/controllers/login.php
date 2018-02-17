@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 				redirect(base_url('admin'));
 			}
 			if ($this->session->userdata('level')==='user') {
-				echo "user";
+				redirect(base_url('home'));
 			}
 
 		}else{

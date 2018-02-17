@@ -34,6 +34,7 @@
                 <table id="data_user" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>No id</th>
                       <th>Fullname</th>
                       <th>Username</th>
@@ -43,8 +44,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php  foreach ($tb_user as $u) { ?>
+                    <?php
+                      $no = 1;
+                      foreach ($tb_user as $u) { 
+                    ?>
                     <tr>
+                      <td><?php echo $no++ ?></td>
                       <td><?php echo $u->id; ?></td>
                       <td><?php echo $u->fullname; ?></td>
                       <td><?php echo $u->username; ?></td>
@@ -61,6 +66,7 @@
                        </a>
                      </td>
                    </tr>
+                  
                    <?php } ?>
                  </tfoot>
                </table>
@@ -76,6 +82,7 @@
      <!-- /.content -->
     </div>
    <!-- /.content-wrapper -->
+   <?php  $this->load->view('layout_admin/footer');?>
   <script>
   $(function () {
     $("#data_user").DataTable({
@@ -88,4 +95,3 @@
     });
   });
 </script>
-<?php  $this->load->view('layout_admin/footer');?>

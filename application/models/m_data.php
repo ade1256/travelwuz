@@ -33,6 +33,10 @@ class M_data extends CI_Model{
 	function tampil_data_rute(){
 		return $this->db->get('tb_rute');
 	}
+	function group_by_rute(){
+		$this->db->group_by('rute_from');
+		return $this->db->get('tb_rute');
+	}
 
 	function tampil_data_transportation(){
 		return $this->db->get('tb_transportation');
@@ -44,5 +48,13 @@ class M_data extends CI_Model{
 
 	function tampil_data_reservation(){
 		return $this->db->get('tb_reservation');
+	}
+
+
+	function join_customer(){
+		$this->db->select('fullname,name, username, address, phone, gender');
+		$this->db->join('tb_user', 'tb_user.id = tb_customer.id');
+		return $this->db->get('tb_customer');
+		
 	}
 }

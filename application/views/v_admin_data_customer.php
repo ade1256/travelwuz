@@ -78,7 +78,8 @@
      <!-- /.content -->
    </div>
    <!-- /.content-wrapper -->
-<script>
+<?php  $this->load->view('layout_admin/footer');?>
+  <script>
   $(function () {
     $("#data_customer").DataTable({
        "paging": true,
@@ -90,4 +91,3 @@
     });
   });
 </script>
-<?php $this->load->view('layout_admin/footer'); ?>
