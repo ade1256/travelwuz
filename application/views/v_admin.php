@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?php echo $this->db->count_all('tb_reservation')?></h3>
 
@@ -35,7 +35,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?php echo $this->db->count_all('tb_customer')?></h3>
 
@@ -50,7 +50,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?php echo  $this->db->count_all('tb_user')?></h3>
 
@@ -65,7 +65,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?php echo  $this->db->count_all('tb_transportation')?></h3>
 
@@ -85,7 +85,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?php echo $this->db->count_all('tb_rute')?></h3>
 

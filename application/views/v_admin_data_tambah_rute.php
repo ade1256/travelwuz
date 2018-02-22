@@ -38,7 +38,7 @@
 								<div class="col-xs-12">
 									<div class="form-group">
 										<label>Rute ID</label>									
-											<input name="id" type="text" class="form-control">
+										<input name="id" type="text" class="form-control">
 										<!-- /.input group -->
 									</div>
 								</div>
@@ -50,7 +50,7 @@
 											<div class="input-group-addon">
 												<i class="fa fa-calendar"></i>
 											</div>
-											<input name="tanggal" id="datemask3" type="text" class="form-control">
+											<input name="tanggal" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text" class="form-control">
 										</div>
 										<!-- /.input group -->
 									</div>
@@ -61,7 +61,36 @@
 										<label>Jam</label>
 
 										<div class="input-group">
-											<input name="waktu" id="time" type="text" class="form-control">
+											<input name="waktu" data-inputmask="'alias': 'hh:mm'" data-mask="" type="text" class="form-control">
+
+											<div class="input-group-addon">
+												<i class="fa fa-clock-o"></i>
+											</div>
+										</div>
+										<!-- /.input group -->
+									</div>
+								</div>
+
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label>Depart arrive</label>
+
+										<div class="input-group">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input name="tanggal_arrive" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text" class="form-control">
+										</div>
+										<!-- /.input group -->
+									</div>
+
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label>Jam</label>
+
+										<div class="input-group">
+											<input name="waktu_arrive" id="time" data-inputmask="'alias': 'hh:mm'" data-mask="" type="text" class="form-control">
 
 											<div class="input-group-addon">
 												<i class="fa fa-clock-o"></i>
@@ -73,31 +102,43 @@
 								
 								<div class="col-xs-12">
 									<div class="form-group">
-									<label>Rute from</label>
-									<input name="rute_from" type="text" class="form-control" name="rute_from"/>
-								</div>
-								</div>
-								<div class="col-xs-12">
-									<div class="form-group">
-									<label>Rute to</label>
-									<input name="rute_to" type="text" class="form-control" name="rute_to"/>
-								</div>
+										<label>Rute from</label>
+										<input name="rute_from" type="text" class="form-control" name="rute_from"/>
+									</div>
 								</div>
 								<div class="col-xs-12">
 									<div class="form-group">
-									<label>Price</label>
-									<input name="price" type="text" class="form-control" name="price"/>
-								</div>
+										<label>Rute to</label>
+										<input name="rute_to" type="text" class="form-control" name="rute_to"/>
+									</div>
 								</div>
 								<div class="col-xs-12">
 									<div class="form-group">
-									<label>Transportation id</label>
-									<select class="form-control" name="transportation_id">
-										<option value="-">-- Pilih Opsi --</option>
-										<option  value="1">1 (Garuda Air)</option>
-										<option value="2">2</option>
-									</select>
+										<label>Price</label>
+										<input name="price" type="text" class="form-control" name="price"/>
+									</div>
 								</div>
+								<div class="col-xs-12">
+									<div class="form-group">
+										<label>Class</label>
+										<select class="form-control" name="class">
+											<option value="-">-- Pilih Opsi --</option>
+											<?php foreach ($class as $k) { ?>
+											<option value="<?php echo $k->class ?>"><?php echo $k->class; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<div class="form-group">
+										<label>Transportation id</label>
+										<select class="form-control" name="transportation_id">
+											<option value="-">-- Pilih Opsi --</option>
+											<?php foreach ($tb_transportation as $t) { ?>
+											<option value="<?php echo $t->id ?>"><?php echo $t->id; ?> - <?php echo $t->description; ?></option>
+											<?php } ?>
+										</select>
+									</div>
 								</div>
 							</div>
 							<!-- /.box-body -->

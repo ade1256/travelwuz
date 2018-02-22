@@ -37,7 +37,6 @@
                     <tr>
                       <th>No id</th>
                       <th>Code</th>
-                      <th>Description</th>
                       <th>Seat Quantity</th>
                       <th>Type id</th>
                       <th>What will you do ?</th>
@@ -48,7 +47,6 @@
                     <tr>
                       <td><?php echo $transportation->id; ?></td>
                       <td><?php echo $transportation->code; ?></td>
-                      <td><?php echo $transportation->description; ?></td>
                       <td><?php echo $transportation->seat_qty; ?></td>
                       <td><?php echo $transportation->transportation_type_id; ?></td>
                       <td>

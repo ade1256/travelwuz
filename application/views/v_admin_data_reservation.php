@@ -37,8 +37,7 @@
                     <tr>
                       <th>No id</th>
                       <th>Code</th>
-                      <th>at</th>
-                      <th>date</th>
+                      <th>Reservation at</th>
                       <th>customer id</th>
                       <th>seat code</th>
                       <th>rute id</th>
@@ -53,8 +52,7 @@
                     <tr>
                       <td><?php echo $reservation->id; ?></td>
                       <td><?php echo $reservation->reservation_code; ?></td>
-                      <td><?php echo $reservation->reservation_at; ?></td>
-                      <td><?php echo $reservation->reservation_date; ?></td>
+                      <td><?php echo $reservation->reservation_at; ?></td>            
                       <td><?php echo $reservation->customer_id; ?></td>
                       <td><?php echo $reservation->seat_code; ?></td>
                       <td><?php echo $reservation->rute_id; ?></td>

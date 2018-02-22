@@ -1,10 +1,10 @@
- <?php $this->load->view('layout/header'); ?>
+
  <!-- Swiper-->
  <div class="swiper-slide-wrapper">
-  <div data-simulate-touch="false" data-autoplay="3500" data-slide-effect="fade" class="swiper-container swiper-slider">
+  <div data-simulate-touch="false" data-autoplay="3500" data-slide-effect="fade" class="swiper-container swiper-slider" style="height: 75vh;">
     <div class="swiper-wrapper">
-      <div data-slide-bg="<?php echo base_url(); ?>assets/images/background-06.jpg" class="swiper-slide"></div>
-      <div data-slide-bg="<?php echo base_url(); ?>assets/images/background-08.jpg" class="swiper-slide"></div>
+      <div data-slide-bg="<?php echo base_url(); ?>assets/images/header-pesawat.png" class="swiper-slide"></div>
+      <div data-slide-bg="<?php echo base_url(); ?>assets/images/header-pesawat2.png" class="swiper-slide"></div>
     </div>
   </div>
   <div class="swiper-onSlider">
@@ -22,16 +22,16 @@
                           <div>
                             <form method="get" action="<?php echo base_url('cari_pesawat/search');?>" class="small">
                               <div class="range">
-                                
+
                                 <div class="range offset-top-15">
                                   <div class="cell-xs">
                                     <div class="form-group">
                                       <label class="form-group-label">From</label>
                                       <!--Select 2-->
-                                      <select data-minimum-results-for-search="Infinity" class="form-control select-filter" name="rute_from">
-                                       <option value="">-- Tidak memilih --</option>
-                                       <?php foreach ($tb_rute as $r) { ?>
-                                       <option value="<?php echo $r->rute_from ?>"><?php echo $r->rute_from ?></option>
+                                      <select data-minimum-results-for-search="Infinity" class="form-control select-filter" name="rute_from" required="">
+                                       <option value="">-- Pilih asal --</option>
+                                       <?php foreach ($rute_from as $asal) { ?>
+                                       <option value="<?php echo $asal->rute_from ?>"><?php echo $asal->rute_from ?></option>
                                        <?php } ?>
                                      </select>
                                    </div>
@@ -42,34 +42,48 @@
                                   <div class="form-group">
                                     <label class="form-group-label">To</label>
                                     <!--Select 2-->
-                                    <select data-minimum-results-for-search="Infinity" class="form-control select-filter" name="rute_to">
-                                      <option value="">-- Tidak memilih --</option>
-                                      <?php foreach ($tb_rute as $r) { ?>
-                                      <option value="<?php echo $r->rute_from ?>"><?php echo $r->rute_from ?></option>
+                                    <select data-minimum-results-for-search="Infinity" class="form-control select-filter" name="rute_to" required="">
+                                      <option value="">-- PIlih tujuan --</option>
+                                      <?php foreach ($rute_to as $tujuan) { ?>
+                                      <option value="<?php echo $tujuan->rute_to ?>"><?php echo $tujuan->rute_to ?></option>
                                       <?php } ?>
                                     </select>
-                                    
                                   </div>
-                                  
                                 </div>
-                                <div class="range offset-top-15">
-                                  <div class="cell-sm-6">
-                                    <div class="form-group">
-                                      <label class="form-group-label">Departure</label>
-                                      <input type="text" data-time-picker="date" data-constraints="@Required" class="form-control" name="depart_at">
-                                    </div>
-                                  </div>
-                                  
-
-                                  <div class="cell-lg-clear-flex cell-sm-bottom cell-lg text-center text-lg-right offset-top-15 offset-lg-top-0">
-                                    <button class="btn btn-primary btn-sm btn-naira btn-naira-up"><span class="icon fa-search"></span><span>Search Flight</span></button>
-                                  </div>
+                                <div class="cell-md-1-5 offset-top-10 offset-md-top-0">
+                                 <div class="form-group">
+                                  <label class="form-group-label">Class</label>
+                                  <!--Select 2-->
+                                  <select data-minimum-results-for-search="Infinity" class="form-control select-filter" name="class">
+                                    <option value="">-- PIlih class --</option>
+                                    <?php foreach ($class as $c) { ?>
+                                    <option value="<?php echo $c->class ?>"><?php echo $c->class ?></option>
+                                    <?php } ?>
+                                  </select>
                                 </div>
                               </div>
-                            </form>
-                          </div>
-                          
+                              <div class="range offset-top-15">
+                                <div class="cell-xs-3">
+                                  <div class="form-group">
+                                    <label class="form-group-label">Departure</label>
+                                    <input type="text" data-time-picker="date" data-constraints="@Required" class="form-control" name="depart_at" placeholder="Pilih tanggal" required="">
+                                  </div>
+                                </div>
+                                <div class="cell-xs-3">
+                                <div class="form-group">
+                                  <label class="form-group-label">Seat</label>
+                                  <input type="number" min="0" value="1" name="seat" class="form-control">
+                                </div>
+                              </div>
+
+                                <div class="cell-lg-clear-flex cell-sm-bottom cell-lg text-center text-lg-right offset-top-15 offset-lg-top-0">
+                                  <button class="btn btn-primary btn-sm btn-naira btn-naira-up"><span class="icon fa-search"></span><span>Search Flight</span></button>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -77,215 +91,6 @@
               </div>
             </div>
           </div>
-          <!-- Page Content-->
-          <main class="page-content">
-            <section class="section-60 section-lg-top-90 section-lg-bottom-80 bg-gray-lighter">
-              <div class="shell shell-wide">
-                <div data-wow-delay="0.1s" class="wow fadeInUp">
-                  <!-- Owl Carousel-->
-                  <div data-dots="true" data-nav="true" data-items="3" data-xs-items="4" data-sm-items="5" data-md-items="5" data-lg-items="6" data-margin="30" data-mouse-drag="false" class="owl-nav-variant-3 owl-dots-lg owl-carousel owl-carousel-middle owl-dots-primary"><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-14.png" width="107" height="74" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-15.png" width="190" height="17" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-16.png" width="151" height="71" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-17.png" width="163" height="46" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-18.png" width="183" height="68" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-19.png" width="178" height="53" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-14.png" width="107" height="74" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-15.png" width="190" height="17" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-16.png" width="151" height="71" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-17.png" width="163" height="46" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-18.png" width="183" height="68" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-19.png" width="178" height="53" alt="" class="img-responsive"></a><a href="#" class="thumbnail-opacity"><img src="<?php echo base_url(); ?>assets/images/logo-15.png" width="190" height="17" alt="" class="img-responsive"></a></div>
-                </div>
-              </div>
-            </section>
-            <section class="section-80 section-md-120">
-              <div class="shell shell-wide">
-                <h5 class="view-animate fadeInUpBigger delay-04 text-info-dr">Why People Choose Us</h5>
-                <h2 class="view-animate fadeInUpBigger delay-04 offset-top-20 text-ubold">Our Advantages</h2>
-                <hr class="view-animate fadeInUpBigger delay-06 divider divider-primary divider-80">
-                <div class="range offset-md-top-90 offset-top-50">
-                  <div class="cell-md-3 icon-box view-animate fadeInUpSmall delay-08"><span class="icon icon-lg text-primary-grad icon-primary icon-circle mdi mdi-airplane"></span>
-                    <h5 class="text-bold offset-top-30">The Most Reliable<br class="veil reveal-md-block">Airlines</h5>
-                    <hr class="divider divider-info divider-50">
-                    <p class="inset-xl-left-40 inset-xl-right-40">We cooperate only with the most reliable airlines who can boast the perfect reputation.</p>
-                  </div>
-                  <div class="cell-md-3 icon-box view-animate fadeInUpSmall delay-08"><span class="icon icon-lg text-primary-grad icon-primary icon-circle mdi mdi-account-multiple"></span>
-                    <h5 class="text-bold offset-top-30">More Than 7M Visitors<br class="veil reveal-md-block">Each Month</h5>
-                    <hr class="divider divider-info divider-50">
-                    <p class="inset-xl-left-40 inset-xl-right-40">More than 7 million people use our services to find and book airline tickets.</p>
-                  </div>
-                  <div class="cell-md-3 icon-box view-animate fadeInUpSmall delay-08"><span class="icon icon-lg text-primary-grad icon-primary icon-circle fa-search"></span>
-                    <h5 class="text-bold offset-top-30">User-Friendly<br class="veil reveal-md-block">Search System</h5>
-                    <hr class="divider divider-info divider-50">
-                    <p class="inset-xl-left-40 inset-xl-right-40">Convenient and fast search for airline tickets, hotels and cars.</p>
-                  </div>
-                  <div class="cell-md-3 icon-box view-animate fadeInUpSmall delay-08"><span style="font-size: 52px;" class="icon icon-lg text-primary-grad icon-primary icon-circle mdi mdi-calendar-multiple-check"></span>
-                    <h5 class="text-bold offset-top-30">Fast and Reliable<br class="veil reveal-md-block">Ticket Booking</h5>
-                    <hr class="divider divider-info divider-50">
-                    <p class="inset-xl-left-40 inset-xl-right-40">We provide reliable ticket booking system, which is also perfect for first-time travellers.</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section class="bg-image-05 context-dark section-70 section-lg-120">
-              <div class="shell parallax-scene-wrapper">
-                <div class="offset-top-0 range range-xs-center">
-                  <div data-wow-delay="0.1s" class="cell-lg-6 cell-md-8 wow fadeInUp">
-                    <h1 class="text-spacing-60 text-uppercase text-ubold p">24/7 Support</h1>
-                    <p class="offset-top-20 offset-md-top-30 big">Our Support Service is available 24 hours a day, 7 days a week to help you buy your tickets.</p><a href="contacts.html" class="offset-top-30 btn btn-primary">get in touch</a>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section class="section-80 section-md-120 bg-gray-lighter">
-              <div class="shell shell-wide">
-                <h5 data-wow-delay="0.1s" class="text-info-dr wow fadeInUp">Recent Blog Posts</h5>
-                <h2 data-wow-delay="0.2s" class="offset-top-20 text-ubold wow fadeInUp">Tips & Tricks</h2>
-                <hr data-wow-delay="0.3s" class="divider divider-primary divider-80 wow fadeInUp">
-                <div class="range offset-md-top-90 offset-top-50">
-                  <div data-wow-delay="0.2s" class="cell-lg-6 wow fadeInLeft">
-                    <!-- Owl Carousel-->
-                    <div data-nav="true" data-items="1" data-mouse-drag="false" class="owl-carousel-fullheight owl-nav-light owl-nav-position-variant-1 owl-nav-variant-1 owl-carousel">
-                      <div style="background: url(&quot;<?php echo base_url(); ?>assets/images/post-32.jpg&quot;) right; background-size: cover;" class="context-dark post-blog post-blog-type-3">
-                        <div class="post-blog-caption">
-                          <div class="range range-xs-middle">
-                            <div class="cell-sm-4 text-sm-left"><a href="blog-classic.html" class="label label-primary">Photos</a></div>
-                            <div class="cell-sm-8 text-sm-right offset-top-10 offset-sm-top-0">
-                              <p class="text-italic">September 7, 2016</p>
-                            </div>
-                          </div>
-                          <h4 class="post-blog-title text-bold"><a href="blog-single-post.html">Visiting Paris on a Budget</a></h4>
-                          <p>Paris is one of top-rated European cities – people  usually try to spend there as much time as possible, and you also may be lucky enough to spend an autumn house-sitting there. But even if you have somewhere to...</p><a href="blog-single-post.html" class="post-blog-link">Read more</a>
-                        </div>
-                      </div>
-                      <div style="background: url(&quot;<?php echo base_url(); ?>assets/images/post-06.jpg&quot;); background-size: cover;" class="context-dark post-blog post-blog-type-3">
-                        <div class="post-blog-caption">
-                          <div class="range range-xs-middle">
-                            <div class="cell-sm-4 text-sm-left"><a href="blog-classic.html" class="label label-primary">Article</a></div>
-                            <div class="cell-sm-8 text-sm-right offset-top-10 offset-sm-top-0">
-                              <p class="text-italic">September 12, 2016</p>
-                            </div>
-                          </div>
-                          <h4 class="post-blog-title text-bold"><a href="blog-single-post.html">How to Make Travel Videos</a></h4>
-                          <p>Introducing our new Travel Video Course, taught by experts Sharon Carpenter and Beverly Bennett! They have over 31,000,000 YouTube views, have worked with big brands, tourism boards, and production...</p><a href="blog-single-post.html" class="post-blog-link">Read more</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cell-lg-6">
-                    <div class="range text-left">
-                      <div data-wow-delay="0.4s" class="cell-sm-6 wow fadeInRight">
-                        <!-- Post type 2-->
-                        <div class="post-blog post-blog-type-2"><img src="<?php echo base_url(); ?>assets/images/post-33.jpg" width="420" height="300" alt="" class="img-responsive"><a href="blog-modern.html" class="label label-primary">Article</a>
-                          <div class="post-blog-caption">
-                            <p class="text-italic text-gray">September 9, 2016</p>
-                            <h4 class="post-blog-title text-bold"><a href="blog-single-post.html">9 Ways to Become a Successful Travel Blogger</a></h4>
-                            <p class="text-base">Travel blogging is a crowded field — and it gets more crowded day by day. And a lot of the advice that people give are actually counterintuitive to...</p><a href="blog-single-post.html" class="post-blog-link">Read more</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-wow-delay="0.5s" class="cell-sm-6 wow fadeInRight">
-                        <!-- Post type 2-->
-                        <div class="post-blog post-blog-type-2"><img src="<?php echo base_url(); ?>assets/images/post-34.jpg" width="420" height="300" alt="" class="img-responsive"><a href="blog-modern.html" class="label label-primary">Article</a>
-                          <div class="post-blog-caption">
-                            <p class="text-italic text-gray">September 11, 2016</p>
-                            <h4 class="post-blog-title text-bold"><a href="blog-single-post.html">The Ultimate Packing List For Female Travelers</a></h4>
-                            <p class="text-base">It can be daunting trying to figure out what to pack for a week, a month, or a year abroad without much — or any — prior experience in the place you want...</p><a href="blog-single-post.html" class="post-blog-link">Read more</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="offset-top-50 offset-lg-top-90">
-                  <div class="view-animate fadeInUpSmall delay-08"><a href="blog-classic.html" class="btn btn-primary btn-naira btn-naira-up"><span class="icon mdi mdi-arrow-right-bold"></span><span>View all blog posts</span></a></div>
-                </div>
-              </div>
-            </section>
-            <section class="section-top-80 section-md-top-120">
-              <div class="shell shell-wide">
-                <h5 class="text-info-dr">Hot Deals</h5>
-                <h2 class="offset-top-20 text-ubold">Popular Destinations</h2>
-                <hr class="divider divider-primary divider-80">
-              </div>
-            </section>
-            <div class="row offset-top-50 offset-lg-top-90 isotope-wrap">
-              <!-- Isotope Filters-->
-              <div class="col-lg-12">
-                <div class="isotope-filters isotope-filters-horizontal">
-                  <ul class="nav-custom">
-                    <li><a data-isotope-filter="*" data-isotope-group="gallery" href="#" class="active">All Offers</a></li>
-                    <li><a data-isotope-filter="Type 1" data-isotope-group="gallery" href="#">Europe</a></li>
-                    <li><a data-isotope-filter="Type 2" data-isotope-group="gallery" href="#">North America</a></li>
-                    <li><a data-isotope-filter="Type 3" data-isotope-group="gallery" href="#">Asia</a></li>
-                    <li><a data-isotope-filter="Type 4" data-isotope-group="gallery" href="#">Australia</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- Isotope Content-->
-              <div class="col-lg-12 offset-top-60">
-                <div data-isotope-layout="masonry" data-isotope-group="gallery" class="row row-no-gutter isotope isotope-no-padding">
-                  <div data-filter="Type 1" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-35.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                    <div class="caption">
-                      <h3 class="text-ubold">Barcelona</h3>
-                      <p>The cultural, commercial, and financial center of Northern California.</p>
-                      <div class="thumbnail-link"></div>
-                    </div></a></div>
-                    <div data-filter="Type 2" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-36.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                      <div class="caption">
-                        <h3 class="text-ubold">London</h3>
-                        <p>The cultural, commercial, and financial center of Northern California.</p>
-                        <div class="thumbnail-link"></div>
-                      </div></a></div>
-                      <div data-filter="Type 3" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-37.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                        <div class="caption">
-                          <h3 class="text-ubold">New York</h3>
-                          <p>The cultural, commercial, and financial center of Northern California.</p>
-                          <div class="thumbnail-link"></div>
-                        </div></a></div>
-                        <div data-filter="Type 4" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-38.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                          <div class="caption">
-                            <h3 class="text-ubold">Rome</h3>
-                            <p>The cultural, commercial, and financial center of Northern California.</p>
-                            <div class="thumbnail-link"></div>
-                          </div></a></div>
-                          <div data-filter="Type 1" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-39.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                            <div class="caption">
-                              <h3 class="text-ubold">Paris</h3>
-                              <p>The cultural, commercial, and financial center of Northern California.</p>
-                              <div class="thumbnail-link"></div>
-                            </div></a></div>
-                            <div data-filter="Type 3" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-40.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                              <div class="caption">
-                                <h3 class="text-ubold">Blue Mountains</h3>
-                                <p>The cultural, commercial, and financial center of Northern California.</p>
-                                <div class="thumbnail-link"></div>
-                              </div></a></div>
-                              <div data-filter="Type 4" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-42.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                                <div class="caption">
-                                  <h3 class="text-ubold">Berlin</h3>
-                                  <p>The cultural, commercial, and financial center of Northern California.</p>
-                                  <div class="thumbnail-link"></div>
-                                </div></a></div>
-                                <div data-filter="Type 2" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-43.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                                  <div class="caption">
-                                    <h3 class="text-ubold">Phuket</h3>
-                                    <p>The cultural, commercial, and financial center of Northern California.</p>
-                                    <div class="thumbnail-link"></div>
-                                  </div></a></div>
-                                  <div data-filter="Type 1" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-41.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                                    <div class="caption">
-                                      <h3 class="text-ubold">Venice</h3>
-                                      <p>The cultural, commercial, and financial center of Northern California.</p>
-                                      <div class="thumbnail-link"></div>
-                                    </div></a></div>
-                                    <div data-filter="Type 4" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-44.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                                      <div class="caption">
-                                        <h3 class="text-ubold">San Francisco</h3>
-                                        <p>The cultural, commercial, and financial center of Northern California.</p>
-                                        <div class="thumbnail-link"></div>
-                                      </div></a></div>
-                                      <div data-filter="Type 1" class="col-xs-12 col-sm-6 col-md-4 col-lg-1-5 isotope-item"><a href="tickets.html" class="thumbnail-variant-4"><img src="<?php echo base_url(); ?>assets/images/post-45.jpg" alt="" class="img-responsive center-block thumbnail-image">
-                                        <div class="caption">
-                                          <h3 class="text-ubold">Mediterranean</h3>
-                                          <p>The cultural, commercial, and financial center of Northern California.</p>
-                                          <div class="thumbnail-link"></div>
-                                        </div></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="section-bottom-80 section-md-bottom-120">
-                                    <div class="offset-top-50 offset-lg-top-90"><a href="tickets.html" class="btn btn-primary btn-naira btn-naira-up">
-                                      <div class="icon fa-search"></div><span>find tickets</span></a></div>
-                                    </div>
-                                  </main>
-                                  <?php $this->load->view('layout/footer');?>
+        </div>
+       
+            

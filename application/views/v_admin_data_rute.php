@@ -37,9 +37,11 @@
                     <tr>
                       <th>No id</th>
                       <th>Depart at</th>
+                      <th>Depart arrive</th>
                       <th>Rute from</th>
                       <th>Rute to</th>
                       <th>Price</th>
+                      <th>class</th>
                       <th>Transportation id</th>
                       <th>What will you do ?</th>
                     </tr>
@@ -49,9 +51,11 @@
                     <tr>
                       <td><?php echo $rute->id; ?></td>
                       <td><?php echo $rute->depart_at; ?></td>
+                      <td><?php echo $rute->depart_arrive; ?></td>
                       <td><?php echo $rute->rute_from; ?></td>
                       <td><?php echo $rute->rute_to; ?></td>
                       <td><?php echo $rute->price; ?></td>
+                      <td><?php echo $rute->class; ?></td>
                       <td><?php echo $rute->transportation_id; ?></td>
                       <td>
                         <a href=<?php echo base_url("crud/edit_rute/".$rute->id); ?> class="btn btn-primary a-btn-slide-text">

@@ -37,11 +37,9 @@
 							$full = $r->depart_at;
 							$jam =substr($full, 11);
 							$tanggal = substr($full,0,10);
-							echo $full;
-							echo "<br>";
-							echo $tanggal;
-							echo "<br>";
-							echo $jam;
+							$full_arrive = $r->depart_arrive;
+							$jam_arrive =substr($full_arrive, 11);
+							$tanggal_arrive = substr($full_arrive,0,10);
 
 							?>
 							<!-- form start -->
@@ -56,7 +54,12 @@
 													<i class="fa fa-calendar"></i>
 												</div>
 												<input type="hidden" class="form-control" name="id" value=<?php echo $r->id;?>  />
-												<input name="tanggal" id="datemask3" type="text" class="form-control" value=<?php echo $tanggal;?> />
+												<?php
+												$posisitanggal = explode("-",$tanggal);
+												$tanggal = "$posisitanggal[2]/$posisitanggal[1]/$posisitanggal[0]";
+												?>
+												<input name="tanggal" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text" class="form-control" value=<?php echo $tanggal;?> />
+												
 											</div>
 											<!-- /.input group -->
 										</div>
@@ -67,7 +70,41 @@
 											<label>Jam</label>
 
 											<div class="input-group">
-												<input name="waktu" id="time" type="text" class="form-control" value=<?php echo $jam;?> />
+												<input name="waktu" data-inputmask="'alias': 'hh:mm'" data-mask="" type="text" class="form-control" value=<?php echo $jam;?> />
+
+												<div class="input-group-addon">
+													<i class="fa fa-clock-o"></i>
+												</div>
+											</div>
+											<!-- /.input group -->
+										</div>
+									</div>
+
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label>Depart arrive</label>
+
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<?php
+												$posisitanggal2 = explode("-",$tanggal_arrive);
+												$tanggal_arrive = "$posisitanggal2[2]/$posisitanggal2[1]/$posisitanggal2[0]";
+												?>
+												<input name="tanggal_arrive" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text" class="form-control" value=<?php echo $tanggal_arrive;?> />
+												
+											</div>
+											<!-- /.input group -->
+										</div>
+
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label>Jam</label>
+
+											<div class="input-group">
+												<input name="waktu_arrive" data-inputmask="'alias': 'hh:mm'" data-mask="" type="text" class="form-control" value=<?php echo $jam_arrive;?> />
 
 												<div class="input-group-addon">
 													<i class="fa fa-clock-o"></i>
@@ -98,11 +135,23 @@
 									</div>
 									<div class="col-xs-12">
 										<div class="form-group">
+											<label>Class</label>
+											<select class="form-control" name="class">
+												<option value="-">-- Pilih Opsi --</option>
+												<?php foreach ($class as $k) { ?>
+												<option <?php if($k->class===$r->class){echo "selected";} ?> value="<?php echo $k->class ?>"><?php echo $k->class; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="form-group">
 											<label>Transportation id</label>
 											<select class="form-control" name="transportation_id">
 												<option value="-">-- Pilih Opsi --</option>
-												<option <?php if($r->transportation_id==='1'){echo "selected";} ?> value="1">1</option>
-												<option  <?php if($r->transportation_id==='2'){echo "selected";} ?> value="2">2</option>
+												<?php foreach ($tb_transportation as $t) { ?>
+												<option <?php if($t->id===$r->transportation_id){echo "selected";} ?> value="<?php echo $t->id ?>"><?php echo $t->id; ?> - <?php echo $t->description; ?></option>
+												<?php } ?>
 											</select>
 										</div>
 									</div>

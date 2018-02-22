@@ -31,7 +31,7 @@
                 <!-- RD Navbar Toggle-->
                 <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
                 <!-- RD Navbar Brand-->
-                <div class="rd-navbar-brand"><a href="index.html" class="reveal-inline-block brand-name"><img src="<?php echo base_url(); ?>assets/images/logo-white.png" width="166" height="55" alt="" class="img-responsive center-block"></a></div>
+                <div class="rd-navbar-brand"><a href="index.html" class="reveal-inline-block brand-name"><img src="<?php echo base_url(); ?>assets/images/logo.png" width="200" height="55" alt="" class="img-responsive center-block"></a></div>
               </div>
               <div class="rd-navbar-nav-wrap">
 

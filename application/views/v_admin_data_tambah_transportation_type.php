@@ -19,7 +19,7 @@
   <!-- Main content -->
   <section class="content">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-6">
 
         <div class="box">
           <div class="box-header">
@@ -28,30 +28,15 @@
           <!-- /.box-header -->
           <div class="box-body">
             <!-- form start -->
-            <form  action=<?php echo base_url("crud/tambah_customer_aksi"); ?> method="post">
+            <form  action=<?php echo base_url("crud/tambah_transportation_type_aksi"); ?> method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" class="form-control" name="name" />
+                  <label>id</label>
+                  <input type="number" class="form-control" name="id" />
                 </div>
                 <div class="form-group">
-                  <label>Address</label>
-                  <input type="text" class="form-control" name="address"/>
-                </div>
-                <div class="form-group">
-                  <label >Phone</label>
-                  <input type="text" class="form-control" name="phone"/>
-                </div>
-                <div class="form-group">
-                  <label >Email</label>
-                  <input type="email" class="form-control" name="email"/>
-                </div>
-                <div class="form-group">
-                  <label>Gender</label>
-                  <select class="form-control" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
+                  <label>Deskripsi singkat</label>
+                  <input type="text" class="form-control" name="description"/>
                 </div>
               </div>
               <!-- /.box-body -->

@@ -13,7 +13,6 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('v_login');
 		if ($this->input->post['submit']) {
-			# code...
 			$this->aksi_login();
 		}
 	}

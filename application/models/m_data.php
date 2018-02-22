@@ -33,10 +33,6 @@ class M_data extends CI_Model{
 	function tampil_data_rute(){
 		return $this->db->get('tb_rute');
 	}
-	function group_by_rute(){
-		$this->db->group_by('rute_from');
-		return $this->db->get('tb_rute');
-	}
 
 	function tampil_data_transportation(){
 		return $this->db->get('tb_transportation');
